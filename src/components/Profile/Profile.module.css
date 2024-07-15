@@ -1,0 +1,12 @@
+
+.content{
+    grid-area: content;
+    background-color: #C4AF9A;
+  &>div{
+    background-color: transparent;
+  }
+    &>img{
+      width: 500px;
+      background-color: transparent;
+    }
+  }
