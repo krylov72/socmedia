@@ -1,0 +1,26 @@
+.header{
+    grid-area: header;
+    background-color: #1E1E24;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   
+   
+   
+    &>p{
+   font-weight: bold;
+   color: #C4AF9A;
+   background-color: transparent;
+   
+    }
+   
+    &>img{
+     width: 40px;
+     height: 40px;
+     filter:invert(100%);
+     background-color: transparent;
+   
+    }
+   }
+   
