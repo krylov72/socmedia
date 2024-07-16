@@ -1,0 +1,25 @@
+.person {
+    display: flex;
+    align-items: flex-start;
+    gap:20px;
+      &>img{
+        width: 150px;
+        height: 150px;
+      }
+
+      .personBlock {
+        display: flex;
+        flex-direction: column;
+        justify-items: flex-end;
+        align-items: baseline;
+        
+        &>h3{
+            margin-bottom: 20px;
+            font-size: 25px;
+        }
+
+        &>p{
+            font-size: 20px;
+        }
+      }
+}
