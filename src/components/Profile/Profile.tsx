@@ -1,13 +1,12 @@
 import { Posts } from './Posts/Posts'
 import s from './Profile.module.css'
+import { ProfileInfo } from './ProfileInfo/ProfileInfo'
 
 export const Profile = () => {
   return (
-    <div className={s.content}>Hello
+    <div className={s.content}>
       <img src="https://siabit.ru/wp-content/uploads/2023/10/5.jpg" alt="" />
-      <div>
-        <img src="https://avatars.mds.yandex.net/i?id=43ceb99d45f9d9a4d78cd04d9329f9c18c2f687dde0f975c-4860157-images-thumbs&n=13" alt="" />
-      </div>
+      <ProfileInfo photo={'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Photos.png'} name='Denis K.' city='Tyumen' dateOfBirth='18.10.1999' education='IT-INCUBATOR' webSite='github.com/krylov72' />
       <Posts />
 
     </div>
