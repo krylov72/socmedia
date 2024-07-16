@@ -2,11 +2,16 @@
 .content{
     grid-area: content;
     background-color: #C4AF9A;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
   &>div{
     background-color: transparent;
   }
     &>img{
-      width: 500px;
+      width: 100%;
+      object-fit: cover;
+      height: 300px;
       background-color: transparent;
     }
-  }
+    }

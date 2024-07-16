@@ -6,7 +6,7 @@
     &>ul{
       display: flex;
       flex-direction: column;
-      gap:5px;
+      gap:10px;
       background-color: transparent;
     }
     &>ul>li {
@@ -14,9 +14,9 @@
     }
     &>ul>li>a{
       text-decoration: none;
-      color:#81AE9D;
+      color:white;
       font-weight: bold;
-      font-size: 17px;
+      font-size: 22px;
       background-color: transparent;
       position: relative;
   
