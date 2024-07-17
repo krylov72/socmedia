@@ -1,9 +1,17 @@
 .post{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
     &>img {
         width: 50px;
     }
     
-    &>p{
-        font-weight: 600;
+    .postInfo>p{
+        margin-left: 20px;
+        font-weight: 500;
+        font-size: 20px;
+    }
+    .postInfo>p:nth-child(2){
+        float: right;
     }
 }

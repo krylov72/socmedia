@@ -19,6 +19,8 @@
       font-size: 22px;
       background-color: transparent;
       position: relative;
+
+      
   
       &::before{
         content:'';
@@ -47,6 +49,10 @@
         }
       }
       
+    }
+
+    &>ul>li>a.active{
+      color:#b93838;
     }
 
    
