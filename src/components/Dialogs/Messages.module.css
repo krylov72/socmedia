@@ -1,0 +1,16 @@
+.messages {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.usersList{
+    padding: 10px;
+}
+
+.messagesList{
+    padding: 10px;
+}
+
+.usersList .active {
+    color:gold;
+}
