@@ -3,8 +3,16 @@
     grid-template-columns: 2fr 10fr;
 }
 
+.dialog{
+    text-decoration: none;
+    color:black
+}
+
+
+
 .usersList{
     padding: 10px;
+
 }
 
 .messagesList{
