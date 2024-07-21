@@ -3,8 +3,8 @@ import s from './Header.module.css'
 export const Header = () => {
     return (
         <header className={s.header}>
-            <p>INCUBATOR</p>
-            <img src="https://www.svgrepo.com/show/322594/incubator.svg" alt="" color="white" />
+            <p>MALINOVKA</p>
+            <img src="   https://cdn-icons-png.flaticon.com/512/1648/1648590.png " alt="" color="white" />
         </header>
     )
 }

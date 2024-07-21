@@ -1,24 +1,49 @@
 .messages {
     display: grid;
     grid-template-columns: 2fr 10fr;
+
+   
 }
 
-.dialog{
+.dialog {
     text-decoration: none;
-    color:black
+    color: black
+}
+
+.message{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    &>img{
+        width: 40px;
+    }
 }
 
 
-
-.usersList{
+.usersList {
     padding: 10px;
-
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px
 }
 
-.messagesList{
+.messagesList {
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
 }
 
 .usersList .active {
-    color:gold;
+    color: gold;
+}
+
+.userDialog {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &>img {
+        width: 40px;
+    }
 }

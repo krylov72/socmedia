@@ -15,8 +15,19 @@ export const routes = {
   settings:'/settings'
 }
 
+type AppPropsType = {
+  state: {
+    postsPage:{
+      posts:Array<{id:number,message:string,likesCount:number}>
+    },
+    dialogsPage:{
+      messages:Array<{id:number,message:string}>,
+      users:Array<{id:number,name:string,url:string}>,
+    }
+  }
+}
 
-function App() {
+const App = ({state}:AppPropsType)=> {
   return (
     <HashRouter>
     <div className='app-wrapper'>
@@ -24,12 +35,12 @@ function App() {
       <NavBar />
       <div className='app-wrapper-content'>
         <Routes>
-          <Route path={routes.profile} element={<Profile/>} />
+          <Route path={routes.profile} element={<Profile posts={state.postsPage.posts}/>} />
           <Route  path='/' element={<Navigate to={routes.profile}/>}/>
-          <Route path={routes.messages} element={<Messages/>} />
-          <Route path={routes.news} element={<Profile/>} />
-          <Route path={routes.music} element={<Profile/>} />
-          <Route path={routes.settings} element={<Profile/>} />
+          <Route path={routes.messages} element={<Messages users={state.dialogsPage.users} messages = {state.dialogsPage.messages}/>}  />
+          <Route path={routes.news} element={''} />
+          <Route path={routes.music} element={''} />
+          <Route path={routes.settings} element={''} />
         </Routes>
         {/* <Profile /> */}
       </div>
