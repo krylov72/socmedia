@@ -1,9 +1,12 @@
+import { rerenderTree } from "../..";
+
 export const state = {
     postsPage:{
         posts: [
             { id: 1, message: 'Hi, how are you?', likesCount: 12 },
             { id: 2, message: "It's my first post", likesCount: 11 },
-        ]
+        ],
+        newPostText: 'denis'
     },
     dialogsPage:{
         messages: [
@@ -21,4 +24,16 @@ export const state = {
             { id: 5, name: 'Evgeniy',url: 'https://cdn-icons-png.flaticon.com/512/1308/1308845.png'},
         ]
     }
+}
+
+export const addPost = (post:string) => {
+    let newPost = {id:5,message:post,likesCount:0}
+    state.postsPage.posts.push(newPost)
+    rerenderTree();
+    
+}
+
+export const changeNewPostText = (newText:string) => {
+    state.postsPage.newPostText = newText
+    rerenderTree();
 }
