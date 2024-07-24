@@ -8,30 +8,22 @@ type PostsPropsType = {
         posts:Array<{id:number,message:string,likesCount:number}>
         newPostText:string
       }
-    addPost:(post:string) => void
-    rerenderTree: () => void
-    changeNewPostText:(newText:string) => void
+      dispatch: (action:{type:string,newText:string}) => void
 }
 
-export const Posts = ({ posts,addPost, rerenderTree, changeNewPostText}: PostsPropsType) => {
-
+export const Posts = ({ posts,dispatch}: PostsPropsType) => {
     let newPost = useRef<HTMLTextAreaElement | null>(null)
 
     
     const addPostHandler = () => {
         if(newPost.current) {
-            addPost(newPost.current.value)
-            newPost.current.value = ''
-            changeNewPostText('')
-           
-            
+            dispatch({type:'ADD-POST',newText:''})
         }
     }
     const onChangeText = (e:ChangeEvent<HTMLTextAreaElement>) => {
+
         if(newPost.current){
-            newPost.current.value = e.currentTarget.value
-           changeNewPostText(e.currentTarget.value) 
-           
+           dispatch({type:'CHANGE-NEW-POST-TEXT',newText:e.currentTarget.value}) 
         }
         
     }

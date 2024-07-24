@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {state} from './components/Redux/state'
-import {addPost,changeNewPostText} from './components/Redux/state'
+import { store } from './components/Redux/state';
+
 
 const root = ReactDOM.createRoot( 
   document.getElementById('root') as HTMLElement
@@ -13,11 +13,11 @@ const root = ReactDOM.createRoot(
 export const rerenderTree = () => {
   root.render(
   
-    <App state = {state} addPost = {addPost} rerenderTree= {rerenderTree} changeNewPostText={changeNewPostText}/>
+    <App store = {store}/>
 
 );
 }
-rerenderTree()
+rerenderTree();
 
 
 // If you want to start measuring performance in your app, pass a function
