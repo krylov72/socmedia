@@ -26,6 +26,7 @@ export type UsersPropsType = {
 export type DialogsPagePropsType = {
     messages: MessagesPropsType[]
     users: UsersPropsType[]
+    newMessageText:string
 }
 
 export type StatePropsType = {
@@ -56,6 +57,7 @@ export let store:StorePropsType = {
                 { id: 4, message: 'Yo' },
                 { id: 5, message: 'Yo' },
             ],
+            newMessageText:'',
             users: [
                 { id: 1, name: 'Denis',url:"https://cdn-icons-png.flaticon.com/512/3135/3135715.png" },
                 { id: 2, name: 'Asya',url: '   https://cdn-icons-png.flaticon.com/512/4322/4322991.png'},
@@ -77,14 +79,17 @@ export let store:StorePropsType = {
         } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
             if(action.newText) {
                 this._state.postsPage.newPostText = action.newText;
-                console.log(store._state.postsPage.newPostText);
             } else {
                 this._state.postsPage.newPostText = ''
-            }
-          
-        
-            
-            
+            }  
+            rerenderTree()
+        } else if (action.type === 'SEND-MESSAGE') {
+            let newMessage = {id:6,message:this._state.dialogsPage.newMessageText}
+            this._state.dialogsPage.messages.push(newMessage)
+            this._state.dialogsPage.newMessageText = ''
+            rerenderTree()
+        } else if (action.type === 'CHANGE-MESSAGE-TEXT') {
+            this._state.dialogsPage.newMessageText = action.newText
             rerenderTree()
         }
     }
@@ -92,6 +97,7 @@ export let store:StorePropsType = {
 }
 
 const ADD_POST = 'ADD-POST'
+const SEND_MESSAGE = 'SEND-MESSAGE'
 
 export const addPostAC = () => {
     if (store._state.postsPage.newPostText.length >0){
@@ -116,6 +122,19 @@ export const changeNewPostTextAC = (text:string) => {
         }
     }
     
+export const sendMessageAC = () => {
+    return {
+        type:SEND_MESSAGE,
+        newText:''
+    }
+}
+
+export const changeMessageTextAC = (text:string) => {
+    return {
+        type:'CHANGE-MESSAGE-TEXT',
+        newText:text
+    }
+}
 
 
 

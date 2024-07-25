@@ -17,7 +17,7 @@ li{
   display: grid;
   grid-template-areas:
   'header header '
-  'nav content ';
+  'nav content';
   grid-template-rows: 80px 1fr;
   grid-template-columns: 2fr 10fr;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;

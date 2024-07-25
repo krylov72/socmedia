@@ -15,7 +15,7 @@ type PostsPropsType = {
 
 
 export const Posts = ({ posts,dispatch}: PostsPropsType) => {
-    let newPost = useRef<HTMLTextAreaElement | null>(null)
+    let newPost = useRef<HTMLTextAreaElement>(null)
 
     
     const addPostHandler = () => {

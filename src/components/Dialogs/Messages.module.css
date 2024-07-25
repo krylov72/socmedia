@@ -1,8 +1,11 @@
 .messages {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    grid-template-areas:
+        ''
+    ;
 
-   
+
 }
 
 .dialog {
@@ -10,11 +13,12 @@
     color: black
 }
 
-.message{
+.message {
     display: flex;
     align-items: center;
-    gap:10px;
-    &>img{
+    gap: 10px;
+
+    &>img {
         width: 40px;
     }
 }
@@ -45,5 +49,51 @@
 
     &>img {
         width: 40px;
+    }
+}
+
+.messageForm {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 10px;
+
+    &>textarea {
+        width: 100%;
+        resize: none;
+        border-radius: 5px;
+        transition: all 0.3 ease-in-out;
+        border-radius: 0% 0% 0% 0% / 0% 0% 0% 0%;
+        box-shadow: 0px 0px rgba(0, 0, 0, .15);
+        transition: all .4s ease;
+
+        &:focus {
+            transition: all 0.3 ease-in-out;
+            border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+            box-shadow: 5px 5px rgba(0, 0, 0, .25);
+        }
+    }
+
+    &>button {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        background-color: white;
+        font-size: 15px;
+        padding: 5px;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+
+
+        &:hover {
+            transition: all 0.3s ease-in-out;
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
     }
 }

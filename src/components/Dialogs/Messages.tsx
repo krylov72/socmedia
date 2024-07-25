@@ -1,20 +1,30 @@
-import React, { useRef } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useRef } from 'react';
 import s from './Messages.module.css'
 import { Message } from './Message/Message';
 import { User } from './User/User';
-import { StatePropsType } from '../Redux/state';
+import { changeMessageTextAC, sendMessageAC, StatePropsType } from '../Redux/state';
 
 type MessagesType = {
     state: StatePropsType
+    dispatch: (action: { type: string, newText: string }) => void
 }
 
-export const Messages = ({ state }: MessagesType) => {
+export const Messages = ({ state, dispatch }: MessagesType) => {
 
     const newMessage = useRef<HTMLTextAreaElement>(null);
 
-    const sendMessage = () => {
-        if (newMessage.current) {
-            alert(newMessage.current.value)
+    const sendMessageHandler = () => {
+            dispatch(sendMessageAC())
+            
+    }
+
+    const onChangeHandler = (e:ChangeEvent<HTMLTextAreaElement>) => {
+        dispatch(changeMessageTextAC(e.currentTarget.value))
+    }
+
+    const onKeyDownHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === 'Enter') {
+            sendMessageHandler()
         }
     }
 
@@ -25,9 +35,14 @@ export const Messages = ({ state }: MessagesType) => {
             </div>
             <div className={s.messagesList}>
                 {state.dialogsPage.messages.map(m => <Message key={m.id} message={m.message} img='https://cdn-icons-png.flaticon.com/512/2202/2202112.png' />)}
+                <div className={s.messageForm}>
+                    <textarea onKeyDown={onKeyDownHandler} onChange={onChangeHandler} value={state.dialogsPage.newMessageText} ref={newMessage} style={{}}></textarea>
+                    <button onClick={sendMessageHandler}>Отправить</button>
+                </div>
+
             </div>
-            <textarea ref = {newMessage} style={{}}></textarea>
-            <button onClick={sendMessage}>Send</button>
+
+
         </div>
     );
 };

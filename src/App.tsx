@@ -30,7 +30,7 @@ const App = ({ store }: AppPropsType) => {
           <Routes>
             <Route path={routes.profile} element={<Profile state={store.getState()} dispatch = {store.dispatch.bind(store)} />} />
             <Route path='/' element={<Navigate to={routes.profile} />} />
-            <Route path={routes.messages} element={<Messages state={store.getState()} />} />
+            <Route path={routes.messages} element={<Messages state={store.getState()} dispatch = {store.dispatch.bind(store)}/>} />
             <Route path={routes.news} element={''} /> 
             <Route path={routes.music} element={''} />
             <Route path={routes.settings} element={''} />
