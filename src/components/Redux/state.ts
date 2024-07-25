@@ -36,7 +36,7 @@ export type StatePropsType = {
 export type StorePropsType = {
     _state:StatePropsType
     getState: () => StatePropsType
-    dispatch: (action:{type:string,newText?:string}) => void
+    dispatch: (action:{type:string,newText:string}) => void
 }
 
 export let store:StorePropsType = {
@@ -75,15 +75,47 @@ export let store:StorePropsType = {
             this._state.postsPage.newPostText = ''
             rerenderTree()
         } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
-            if(action.newText)
-            this._state.postsPage.newPostText = action.newText;
+            if(action.newText) {
+                this._state.postsPage.newPostText = action.newText;
+                console.log(store._state.postsPage.newPostText);
+            } else {
+                this._state.postsPage.newPostText = ''
+            }
+          
+        
             
             
             rerenderTree()
         }
     }
-
+    
 }
+
+const ADD_POST = 'ADD-POST'
+
+export const addPostAC = () => {
+    if (store._state.postsPage.newPostText.length >0){
+        return {
+            type:'ADD-POST',
+            newText:''
+        }
+    }
+    else {
+        alert('Введите сообщение')
+        return {
+            type:'',
+            newText:''
+        }
+    }
+}
+
+export const changeNewPostTextAC = (text:string) => {
+        return {
+            type:'CHANGE-NEW-POST-TEXT',
+            newText:text
+        }
+    }
+    
 
 
 

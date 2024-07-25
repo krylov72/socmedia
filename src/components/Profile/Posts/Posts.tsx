@@ -2,6 +2,7 @@
 import s from './Posts.module.css'
 import { Post } from './Post/Post'
 import { ChangeEvent, useRef } from 'react';
+import { addPostAC, changeNewPostTextAC } from '../../Redux/state';
 
 type PostsPropsType = {
     posts:{
@@ -11,21 +12,21 @@ type PostsPropsType = {
       dispatch: (action:{type:string,newText:string}) => void
 }
 
+
+
 export const Posts = ({ posts,dispatch}: PostsPropsType) => {
     let newPost = useRef<HTMLTextAreaElement | null>(null)
 
     
     const addPostHandler = () => {
         if(newPost.current) {
-            dispatch({type:'ADD-POST',newText:''})
+            dispatch(addPostAC())
         }
     }
     const onChangeText = (e:ChangeEvent<HTMLTextAreaElement>) => {
-
         if(newPost.current){
-           dispatch({type:'CHANGE-NEW-POST-TEXT',newText:e.currentTarget.value}) 
+           dispatch(changeNewPostTextAC(e.currentTarget.value)) 
         }
-        
     }
     return (
         <div className={s.posts}>
