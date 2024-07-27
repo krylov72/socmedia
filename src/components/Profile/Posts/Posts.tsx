@@ -1,8 +1,8 @@
 
 import s from './Posts.module.css'
 import { Post } from './Post/Post'
-import { ChangeEvent, useRef } from 'react';
-import { addPostAC, changeNewPostTextAC } from '../../Redux/state';
+import { ChangeEvent, KeyboardEvent, useRef } from 'react';
+import { addPostAC, changeNewPostTextAC } from '../../Redux/profileReducer';
 
 type PostsPropsType = {
     posts:{
@@ -28,11 +28,17 @@ export const Posts = ({ posts,dispatch}: PostsPropsType) => {
            dispatch(changeNewPostTextAC(e.currentTarget.value)) 
         }
     }
+    
+    const onKeyDownHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.key === 'Enter') {
+            addPostHandler()
+        }
+    }
     return (
         <div className={s.posts}>
             <h3>My posts</h3>
             <div className={s.newPost}>
-                <textarea ref = {newPost} onChange={onChangeText} value={posts.newPostText}></textarea>
+                <textarea onKeyDown={onKeyDownHandler} ref = {newPost} onChange={onChangeText} value={posts.newPostText}></textarea>
                 <button onClick={addPostHandler}>Add post</button>
             </div>
             {posts.posts.map(p => <Post key={p.id} message={p.message} likeCount={p.likesCount} />)}

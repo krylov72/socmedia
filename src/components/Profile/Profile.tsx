@@ -1,4 +1,4 @@
-import { StatePropsType } from '../Redux/state'
+import { StatePropsType } from '../Redux/store'
 import { Posts } from './Posts/Posts'
 import s from './Profile.module.css'
 import { ProfileInfo } from './ProfileInfo/ProfileInfo'

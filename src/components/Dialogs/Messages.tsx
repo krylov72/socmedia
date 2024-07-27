@@ -2,7 +2,8 @@ import React, { ChangeEvent, KeyboardEvent, useRef } from 'react';
 import s from './Messages.module.css'
 import { Message } from './Message/Message';
 import { User } from './User/User';
-import { changeMessageTextAC, sendMessageAC, StatePropsType } from '../Redux/state';
+import { StatePropsType } from '../Redux/store';
+import { changeMessageTextAC, sendMessageAC } from '../Redux/dialogsReducer';
 
 type MessagesType = {
     state: StatePropsType

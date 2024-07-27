@@ -6,7 +6,7 @@ import { NavBar } from './components/Navbar/NavBar';
 import { Profile } from './components/Profile/Profile';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Messages } from './components/Dialogs/Messages';
-import { StorePropsType } from './components/Redux/state';
+import { StatePropsType } from './components/Redux/store';
 
 export const routes = {
   profile: '/profile',
@@ -17,10 +17,11 @@ export const routes = {
 }
 
 type AppPropsType = {
-  store:StorePropsType
+  state:StatePropsType
+  dispatch:(action: { type: string, newText: string }) => void
 }
 
-const App = ({ store }: AppPropsType) => {
+const App = ({ state,dispatch }: AppPropsType) => {
   return (
     <HashRouter>
       <div className='app-wrapper'>
@@ -28,9 +29,9 @@ const App = ({ store }: AppPropsType) => {
         <NavBar />
         <div className='app-wrapper-content'>
           <Routes>
-            <Route path={routes.profile} element={<Profile state={store.getState()} dispatch = {store.dispatch.bind(store)} />} />
+            <Route path={routes.profile} element={<Profile state={state} dispatch = {dispatch} />} />
             <Route path='/' element={<Navigate to={routes.profile} />} />
-            <Route path={routes.messages} element={<Messages state={store.getState()} dispatch = {store.dispatch.bind(store)}/>} />
+            <Route path={routes.messages} element={<Messages state={state} dispatch = {dispatch}/>} />
             <Route path={routes.news} element={''} /> 
             <Route path={routes.music} element={''} />
             <Route path={routes.settings} element={''} />
