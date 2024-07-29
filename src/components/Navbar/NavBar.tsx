@@ -12,6 +12,7 @@ export const NavBar = () => {
           <NavItem name='News' route={routes.news}/>
           <NavItem name='Music' route={routes.music}/>
           <NavItem name='Settings' route={routes.settings}/>
+          <NavItem name='Find User' route={routes.users} />
         </ul>
       </nav>
     )

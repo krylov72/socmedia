@@ -41,8 +41,8 @@ export type StorePropsType = {
     _state: StatePropsType
     getState: () => StatePropsType
     dispatch: (action: { type: string, newText: string }) => void
-    subscribe:(observer:any) => void,
-    _rerenderTree: (state:StatePropsType) => void
+    subscribe: (observer: any) => void,
+    _rerenderTree: (state: StatePropsType) => void
 }
 
 
@@ -74,7 +74,7 @@ export let store: StorePropsType = {
             ]
         },
     },
-    _rerenderTree(state:StatePropsType) {
+    _rerenderTree(state: StatePropsType) {
         console.log('Changed');
     },
     getState() {
@@ -86,7 +86,7 @@ export let store: StorePropsType = {
         this._rerenderTree(this._state)
 
     },
-    subscribe(observer:()=>void) {
+    subscribe(observer: () => void) {
         this._rerenderTree = observer
     }
 

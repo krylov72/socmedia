@@ -21,15 +21,12 @@ const initialState = {
 export const dialogsReducer = (state:DialogsPagePropsType = initialState,action:{type:string,newText:string}) => {
     switch(action.type) {
         case 'SEND-MESSAGE':{
-            let newPost = {id:6,message: state.newMessageText}
-            state.messages.push(newPost)
-            state.newMessageText = ''
-            return state
+            let newMessage = {id:6,message: state.newMessageText}
+            return {...state,messages:[...state.messages,newMessage],newMessageText:''}
         }
         break;
         case 'CHANGE-MESSAGE-TEXT':{
-            state.newMessageText = action.newText
-            return state
+            return {...state,newMessageText:state.newMessageText = action.newText}
         }
         break;
         default:{

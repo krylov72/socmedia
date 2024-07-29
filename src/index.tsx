@@ -5,22 +5,21 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StatePropsType } from './components/Redux/store';
 import { store } from './components/Redux/redux-store';
+import { Provider } from 'react-redux';
 
 
-const root = ReactDOM.createRoot( 
+const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-let rerenderTree = (state:StatePropsType) => {
+ 
   root.render(
-    <App state = {state} dispatch= {store.dispatch.bind(store)}/>
+    <Provider store={store}>
+      <App />
+    </Provider>
 
-);
-}
-rerenderTree(store.getState());
 
-store.subscribe(() => rerenderTree(store.getState()));
-
+  );
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
