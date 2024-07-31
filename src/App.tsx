@@ -28,8 +28,7 @@ const App = () => {
             } />
             <Route path='/' element={<Navigate to={routes.profile} />} />
             <Route path={routes.messages} element={<MessagesContainer  />} />
-            <Route path={routes.users} element={<UsersContainer   />} />
-  
+            <Route path={routes.users} element={<UsersContainer />} />
             <Route path={routes.news} element={''} />
             <Route path={routes.music} element={''} />
             <Route path={routes.settings} element={''} />

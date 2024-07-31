@@ -17,41 +17,7 @@ export type UsersType = {
 
 export type ActionType = unfollowACType | FollowACType | setUsersACType
 const initialState: UsersType = {
-    users: [
-        {
-            id: 1,
-            photo: 'https://cdn-icons-png.flaticon.com/512/847/847969.png ',
-            username: 'Denis',
-            followed:false,
-            status: 'Looking for a job',
-            location: {
-                city: 'Tuymen',
-                country: 'Russia'
-            }
-        },
-        {
-            id: 2,
-            photo: '',
-            username: 'Asya',
-            followed:true,
-            status: 'Working in Garden Coffee',
-            location: {
-                city: 'Tuymen',
-                country: 'Russia'
-            }
-        },
-        {
-            id: 3,
-            photo: '',
-            username: 'Mixyul',
-            followed:false,
-            status: 'Тестировщик энергетических напитков',
-            location: {
-                city: 'Tuymen',
-                country: 'Russia'
-            }
-        }
-    ]
+    users: []
 }
 
 
@@ -64,6 +30,7 @@ export const usersReducer = (state: UsersType = initialState, action: ActionType
             return {...state,users:state.users.map(u => u.id === action.payload.id?{...u,followed:false}:u)}
         }
         case 'SET-USERS':{
+
             return {...state,users:[...state.users,...action.payload.users]}
         }
         default: return state
@@ -82,6 +49,7 @@ export const followAC = (id:number) => {
         payload:{
             id
         }
+        
     } as const
 }
 
@@ -95,6 +63,7 @@ export const unfollowAC = (id:number) => {
 }
 
 export const setUsersAC = (users:UserType[]) => {
+    debugger
     return {
         type:'SET-USERS',
         payload:{

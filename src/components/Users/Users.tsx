@@ -1,23 +1,72 @@
-import { StoreType } from "../Redux/redux-store";
+import { useEffect } from "react";
+import { UserType, UsersType } from "../Redux/usersReducer";
 import s from './Users.module.css'
 
 type UsersPropsType = {
-    state:StoreType
-    onFollow: (id:number) => void
+    state: UsersType
+    follow: (id: number) => void
+    unfollow: (id: number) => void
+    setUsers: (users: UserType[]) => void
 };
-export const Users = ({state,onFollow}:UsersPropsType) => {
+export let Users = ({ state, follow, unfollow,setUsers }: UsersPropsType) => {
+
+    useEffect(() => {
+        if(state.users.length === 0) 
+        setUsers([
+            {
+                id: 1,
+                photo: 'https://cdn-icons-png.flaticon.com/512/847/847969.png',
+                username: 'Denis',
+                followed: false,
+                status: 'Looking for a job',
+                location: { city: 'Tuymen', country: 'Russia' }
+            },
+            {
+                id: 2,
+                photo: 'https://cdn-icons-png.flaticon.com/512/847/847969.png',
+                username: 'Asya',
+                followed: true,
+                status: 'Working in Garden Coffee',
+                location: { city: 'Tuymen', country: 'Russia' }
+            },
+            {
+                id: 3,
+                photo: 'https://cdn-icons-png.flaticon.com/512/847/847969.png',
+                username: 'Mixyul',
+                followed: false,
+                status: 'Тестировщик энергетических напитков',
+                location: { city: 'Tuymen', country: 'Russia' }
+            }
+        ])
+    },[state.users.length,setUsers])
+        
+        
 
     return (
-        
-        <div>
-            Users
-            <div>
-                <div style={{display:'flex',flexDirection:'column',gap:'10px',marginTop:'30px',marginLeft:'10px'}} >
-                    <img style={{width:'60px'}}  src={state.usersPage.users[0].photo} alt="" />
-                    <button style={{width:'50px',marginLeft:'3px'}}>s</button>
-                </div>
-                div
-            </div>
+        <div className={s.users}>
+            <h3>Users</h3>
+            {state.users.map(u =>
+                <div className={s.usersContainer} key={u.id}>
+                    <div className={s.user}>
+                        <div className={s.userImage} >
+                            <img src={state.users[0].photo} alt="" />
+                            {u.followed
+                            ?<button onClick={() => {unfollow(u.id)}}>unfollow</button>
+                            :<button onClick={() => {follow(u.id)}}>follow</button>
+                            }
+                        </div>
+                        <div className={s.userInfo}>
+                            <div className={s.userStatus}>
+                                <h4>{u.username}</h4>
+                                <p>{u.status}</p>
+                            </div>
+                            <div className={s.userLocation}>
+                                <p>{u.location.city}, <br /> {u.location.country}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>)
+            }
         </div>
     );
 };
